@@ -5,7 +5,6 @@
     <string name="facebook_app_id">1897347690379492</string>
     <string name="fb_login_protocol_scheme">fb612218755624572</string>
     <string-array name="usetype">
-        <item><b>Select User Type</b></item>
         <item>Parent</item>
         <item>School</item>
     </string-array>

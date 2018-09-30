@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import org.angmarch.views.NiceSpinner;
+
 import java.util.Arrays;
 
 public class Signup_Form extends AppCompatActivity {
@@ -14,7 +16,7 @@ public class Signup_Form extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup__form);
 
-        final Spinner userType = findViewById(R.id.userType);
+        final NiceSpinner userType = findViewById(R.id.userType);
         String[] users = getResources().getStringArray(R.array.usetype);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, users);
         userType.setAdapter(adapter);
