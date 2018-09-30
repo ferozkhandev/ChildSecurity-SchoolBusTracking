@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "464499546546",
+    "firebase_url": "https://childsecurity-e59f2.firebaseio.com",
+    "project_id": "childsecurity-e59f2",
+    "storage_bucket": "childsecurity-e59f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464499546546:android:d592dc4c82d90140",
+        "android_client_info": {
+          "package_name": "com.childsecuritymobileapp.rabia.childsecurity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464499546546-j7p8q21tnrq4u3imvi7bp7rpjgh10kpk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.childsecuritymobileapp.rabia.childsecurity",
+            "certificate_hash": "1410851b963a889c85b27a498389eb3158442b98"
+          }
+        },
+        {
+          "client_id": "464499546546-q6qkggnsnh19p87goi2r2956smvhg2q0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG16hdaJVWzTrKXrBbOhy_sNF2m-1ehSg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464499546546-q6qkggnsnh19p87goi2r2956smvhg2q0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
