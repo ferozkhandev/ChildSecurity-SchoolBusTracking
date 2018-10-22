@@ -38,7 +38,7 @@
         android:layout_marginRight="70dp"
         android:background="@drawable/input_shape"
         android:padding="15dp"
-        android:hint="Username"
+        android:hint="Email"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"
         android:singleLine="true"/>

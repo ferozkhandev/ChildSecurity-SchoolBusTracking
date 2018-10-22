@@ -4,6 +4,7 @@
     <!--Facebook Strings -->
     <string name="facebook_app_id">1897347690379492</string>
     <string name="fb_login_protocol_scheme">fb612218755624572</string>
+    <string name="google_web_client_id">AIzaSyCjjF_3erZZ4eajOvZzYRebVoujX0n0bY4</string>
     <string-array name="usetype">
         <item>Parent</item>
         <item>School</item>
