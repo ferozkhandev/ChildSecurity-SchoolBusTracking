@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Signup_Form">
+    tools:context=".GetDetailsOfDriver">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:alpha="0.8">
     </LinearLayout>
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/driverName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -28,87 +28,66 @@
         android:layout_marginRight="70dp"
         android:background="@drawable/input_shape"
         android:padding="15dp"
-        android:hint="Username"
+        android:hint="Name"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"
         android:singleLine="true"/>
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/driverPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/driverName"
         android:inputType="text"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/input_shape"
         android:padding="15dp"
-        android:hint="Email"
+        android:hint="Phone Number"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"/>
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/driverCNIC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/driverPhone"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
-        android:inputType="textPassword"
+        android:inputType="phone"
         android:background="@drawable/input_shape"
         android:padding="15dp"
-        android:hint="Password"
+        android:hint="CNIC (ex: 3512345678901)"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"
         android:singleLine="true"/>
     <EditText
-        android:id="@+id/cPassword"
+        android:id="@+id/driverVehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/driverCNIC"
         android:inputType="textPassword"
         android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/input_shape"
         android:padding="15dp"
-        android:hint="Confirm Password"
+        android:hint="Vehicle Number"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"/>
-    <EditText
-        android:id="@+id/mobileNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/cPassword"
-        android:inputType="phone"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="70dp"
-        android:background="@drawable/input_shape"
-        android:padding="15dp"
-        android:hint="Mobile Number"
-        android:textColorHint="@color/colorAccent"
-        android:textColor="@color/colorAccent"/>
-    <org.angmarch.views.NiceSpinner
-        android:id="@+id/userType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/mobileNumber"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="70dp"/>
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/driverNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userType"
+        android:layout_below="@+id/driverVehicle"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="70dp"
-        android:layout_alignEnd="@id/userType"
+        android:layout_alignEnd="@id/driverVehicle"
         android:background="@drawable/btn_shape"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:text="Next"
         android:clickable="true"
         android:textColor="@color/colorPrimaryDark"/>
+
 </RelativeLayout>

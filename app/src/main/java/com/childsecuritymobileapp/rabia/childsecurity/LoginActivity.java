@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         if(user != null)
         {
-            UserData userData = new UserData(user.getDisplayName(),user.getEmail(),user.getPhoneNumber(),user.getPhotoUrl());
+            UserData userData = new UserData(user.getDisplayName(),user.getEmail(),user.getPhoneNumber(),user.getPhotoUrl(), null);
             Intent intent = new Intent(LoginActivity.this, Signup_Form.class);
             intent.putExtra("userData", userData);
             startActivity(intent);

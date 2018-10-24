@@ -22,10 +22,11 @@ import java.util.Arrays;
 
 public class Signup_Form extends AppCompatActivity {
 
-    private Button btn_signup;
+    private Button btn_next;
 
     //View Variables
     private EditText email, mobileNumber, password, confirmPassword, username;
+    private NiceSpinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +37,49 @@ public class Signup_Form extends AppCompatActivity {
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         mobileNumber = findViewById(R.id.mobileNumber);
+        password = findViewById(R.id.password);
+        confirmPassword = findViewById(R.id.cPassword);
 
-        final NiceSpinner userType = findViewById(R.id.userType);
+        spinner = findViewById(R.id.userType);
         String[] users = getResources().getStringArray(R.array.usetype);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, users);
-        userType.setAdapter(adapter);
+        spinner.setAdapter(adapter);
 
-        btn_signup = findViewById(R.id.btn_signup);
+        btn_next = findViewById(R.id.btn_next);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        UserData userData = (UserData) getIntent().getExtras().getParcelable("userData");
+        final UserData userData = (UserData) getIntent().getExtras().getParcelable("userData");
         username.setText(userData.getDisplayName());
         email.setText(userData.getEmail());
         mobileNumber.setText(userData.getMobileNumber());
-        btn_signup.setOnClickListener(new View.OnClickListener() {
+        btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                LoginManager.getInstance().logOut();
-                Intent intent = new Intent(Signup_Form.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if (validate())
+                {
+                    String user = spinner.getText().toString();
+                    if (user.equals("Parent"))
+                    {
+                        Intent intent = new Intent(Signup_Form.this, GetDetailsofStudent.class);
+                        userData.setPassword(password.getText().toString());
+                        userData.setMobileNumber(mobileNumber.getText().toString());
+                        intent.putExtra("user",userData);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else if (user.equals("School"))
+                    {
+                        Intent intent = new Intent(Signup_Form.this, GetDetailsOfDriver.class);
+                        userData.setPassword(password.getText().toString());
+                        userData.setMobileNumber(mobileNumber.getText().toString());
+                        intent.putExtra("user",userData);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
             }
         });
     }

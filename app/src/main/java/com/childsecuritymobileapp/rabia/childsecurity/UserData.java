@@ -6,11 +6,12 @@ import android.os.Parcelable;
 
 public class UserData implements Parcelable
 {
-    private String displayName, email, mobileNumber;
+    private String displayName, email, mobileNumber, password;
     private Uri photoUri;
     private final String defaultDisplayName = "App user";
     private final String defaultEmail = "";
     private final String defaultMobileNumber = "";
+    private final String defaultPassword = "";
     private String photoUrl = "https://cdn.iconscout.com/public/images/icon/premium/png-512/baby-safety-security-protect-insurance-3cdff6482fe3cce3-512x512.png";
     private final Uri defaultPhotoUri = Uri.parse(photoUrl);
 
@@ -20,6 +21,7 @@ public class UserData implements Parcelable
         setEmail(defaultEmail);
         setMobileNumber(defaultMobileNumber);
         setPhotoUri(defaultPhotoUri);
+        setPassword(defaultPassword);
     }
     UserData(Parcel in)
     {
@@ -27,8 +29,9 @@ public class UserData implements Parcelable
         setEmail(in.readString());
         setMobileNumber(in.readString());
         setPhotoUri((Uri)in.readParcelable(Uri.class.getClassLoader()));
+        setPassword(in.readString());
     }
-    UserData(String displayName, String email, String mobileNumber, Uri photoUri)
+    UserData(String displayName, String email, String mobileNumber, Uri photoUri, String password)
     {
         if(displayName != null)
         {
@@ -63,6 +66,14 @@ public class UserData implements Parcelable
         {
             setPhotoUri(defaultPhotoUri);
         }
+        if (password != null)
+        {
+            setPassword(password);
+        }
+        else
+        {
+            setPassword(defaultPassword);
+        }
     }
 
 
@@ -83,6 +94,9 @@ public class UserData implements Parcelable
         this.mobileNumber = mobileNumber;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     //Getters
     public String getDisplayName() {
@@ -101,6 +115,10 @@ public class UserData implements Parcelable
         return mobileNumber;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -112,6 +130,7 @@ public class UserData implements Parcelable
         parcel.writeString(getEmail());
         parcel.writeString(getMobileNumber());
         parcel.writeParcelable(getPhotoUri(),i);
+        parcel.writeString(getPassword());
     }
     // This is to de-serialize the object
     public static final Parcelable.Creator<UserData> CREATOR = new Parcelable.Creator<UserData>(){
