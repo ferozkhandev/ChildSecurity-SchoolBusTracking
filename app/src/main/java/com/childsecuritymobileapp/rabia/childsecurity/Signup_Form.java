@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.angmarch.views.NiceSpinner;
 
@@ -27,6 +28,8 @@ public class Signup_Form extends AppCompatActivity {
     //View Variables
     private EditText email, mobileNumber, password, confirmPassword, username;
     private NiceSpinner spinner;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,10 @@ public class Signup_Form extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         btn_next = findViewById(R.id.btn_next);
+
+        //Firebase Declarations
+        firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -60,6 +67,7 @@ public class Signup_Form extends AppCompatActivity {
             public void onClick(View view) {
                 if (validate())
                 {
+                    updatePassword();
                     String user = spinner.getText().toString();
                     if (user.equals("Parent"))
                     {
@@ -94,8 +102,13 @@ public class Signup_Form extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    private void updatePassword()
+    {
+        firebaseAuth.getCurrentUser().updatePassword(password.getText().toString());
+    }
+
     //Validate Fields
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
 
         String names = username.getText().toString();

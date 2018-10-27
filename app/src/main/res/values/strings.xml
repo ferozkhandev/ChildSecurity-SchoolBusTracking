@@ -9,5 +9,8 @@
         <item>Parent</item>
         <item>School</item>
     </string-array>
+    <string name="title_activity_home">Home</string>
+    <string name="action_logout">Logout</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

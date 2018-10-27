@@ -74,6 +74,10 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private final int RC_SIGN_IN = 7;
 
+    //Views Variables
+    private EditText username,password;
+    private Button loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +85,17 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        //Views Declaration
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        loginBtn = findViewById(R.id.btn_signin);
+        loginBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
     }
 
     @Override
@@ -121,11 +136,11 @@ public class LoginActivity extends AppCompatActivity {
     {
         if(user != null)
         {
-            UserData userData = new UserData(user.getDisplayName(),user.getEmail(),user.getPhoneNumber(),user.getPhotoUrl(), null);
-            Intent intent = new Intent(LoginActivity.this, Signup_Form.class);
-            intent.putExtra("userData", userData);
-            startActivity(intent);
-            finish();
+                UserData userData = new UserData(user.getDisplayName(),user.getEmail(),user.getPhoneNumber(),user.getPhotoUrl(), null);
+                Intent intent = new Intent(LoginActivity.this, Signup_Form.class);
+                intent.putExtra("userData", userData);
+                startActivity(intent);
+                finish();
         }
         else
         {
@@ -239,6 +254,32 @@ public class LoginActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    //Login Function
+    private void login()
+    {
+        String user = username.getText().toString();
+        String pass = password.getText().toString();
+        if (!user.isEmpty() && !pass.isEmpty())
+        {
+            mAuth.signInWithEmailAndPassword(user,pass);
+            Intent intent = new Intent(LoginActivity.this, Home.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            if (user.isEmpty())
+            {
+                username.setError("Fill this field");
+            }
+            else
+            {
+                password.setError("Fill this field");
+            }
+
+        }
     }
 }
 

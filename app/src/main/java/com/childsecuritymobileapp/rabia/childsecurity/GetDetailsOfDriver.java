@@ -1,5 +1,6 @@
 package com.childsecuritymobileapp.rabia.childsecurity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.android.gms.common.util.NumberUtils;
+import com.google.zxing.common.StringUtils;
 
 public class GetDetailsOfDriver extends AppCompatActivity {
     UserData userData, driverData;
@@ -41,7 +45,12 @@ public class GetDetailsOfDriver extends AppCompatActivity {
         driverNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (validate())
+                {
+                    Intent intent = new Intent(GetDetailsOfDriver.this, Home.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
@@ -73,21 +82,21 @@ public class GetDetailsOfDriver extends AppCompatActivity {
         }
 
         if (dphone.isEmpty() || !Patterns.PHONE.matcher(dphone).matches()) {
-            driverPhone.setError("enter a valid email address");
+            driverPhone.setError("Enter a valid Phone Number");
             valid = false;
         } else {
             driverPhone.setError(null);
         }
 
-        if (dCNIC.isEmpty() || dCNIC.length() < 6) {
-            driverCNIC.setError("Password cannot be less than 6 characters.");
+        if (dCNIC.isEmpty() || dCNIC.length() != 13) {
+            driverCNIC.setError("Kindly Enter a valid CNIC.");
             valid = false;
         } else {
             driverCNIC.setError(null);
         }
         if (!dVehicle.isEmpty())
         {
-            driverVehicle.setError("Password not matched.");
+            driverVehicle.setError("Vechile number must not be empty");
             valid = false;
         }
         else
